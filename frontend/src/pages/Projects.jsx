@@ -54,6 +54,7 @@ export default function Projects() {
   const list = useList("/api/projects");
   const [filter, setFilter] = useState("All");
   const [viewing, setViewing] = useState(null); // index into `visible`
+  const [active, setActive] = useState(0); // row previewed on desktop
   const [gridKey, setGridKey] = useState(0);
 
   const counts = useMemo(() => {
@@ -69,22 +70,25 @@ export default function Projects() {
     return cat ? list.items.filter((p) => p.category === cat) : list.items;
   }, [filter, list.items]);
 
+  const current = Math.min(active, Math.max(visible.length - 1, 0));
+
   useLayoutEffect(() => {
     if (!page.data) return;
     const ctx = gsap.context(() => revealIn(ref.current), ref);
     return () => ctx.revert();
   }, [page.data]);
 
-  // Animate the grid in whenever the filter changes.
+  // Animate the rows in whenever the filter changes.
   useLayoutEffect(() => {
     if (reduceMotion || gridKey === 0) return;
-    gsap.fromTo(".proj-card", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.05, ease: "power3.out" });
+    gsap.fromTo(".pv-row", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.7, stagger: 0.06, ease: "power3.out" });
   }, [gridKey]);
 
   const move = (dir) =>
     setViewing((i) => (i === null ? null : (i + dir + visible.length) % visible.length));
   const choose = (label) => {
     setFilter(label);
+    setActive(0);
     setGridKey((k) => k + 1);
   };
 
@@ -112,26 +116,41 @@ export default function Projects() {
       </section>
 
       <section className="section projects-list">
-        <div className="container pv-grid" key={gridKey}>
-          {visible.map((p, i) => (
-            <button
-              key={p.id}
-              className="proj-card"
-              onClick={() => setViewing(i)}
-              aria-label={`View ${p.title}`}
-            >
-              <div className="proj-card-media">
-                <img src={p.image_url} alt="" loading="lazy" />
-                <span className="proj-card-tag">{p.category}</span>
-              </div>
-              <div className="proj-card-info">
-                <span className="proj-card-num">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="h-md">{p.title}</h3>
-                <p className="proj-card-loc">{p.location}</p>
-              </div>
-            </button>
-          ))}
-          {visible.length === 0 && <p className="muted">No projects in this category yet.</p>}
+        <div className="container pv-wrap" key={gridKey}>
+          {visible.length === 0 ? (
+            <p className="pv-empty">No projects in this category yet.</p>
+          ) : (
+            <>
+              <ol className="pv-index">
+                {visible.map((p, i) => (
+                  <li key={p.id}>
+                    <button
+                      className={`pv-row ${current === i ? "on" : ""}`}
+                      onMouseEnter={() => setActive(i)}
+                      onFocus={() => setActive(i)}
+                      onClick={() => setViewing(i)}
+                      aria-label={`View ${p.title}`}
+                    >
+                      <span className="pv-num">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="pv-main">
+                        <span className="pv-title">{p.title}</span>
+                        <span className="pv-meta">{p.category} · {p.location}</span>
+                      </span>
+                      <span className="pv-thumb"><img src={p.image_url} alt="" loading="lazy" /></span>
+                      <span className="pv-arrow" aria-hidden="true">→</span>
+                    </button>
+                  </li>
+                ))}
+              </ol>
+
+              <aside className="pv-preview" aria-hidden="true">
+                {visible.map((p, i) => (
+                  <img key={p.id} src={p.image_url} alt="" loading="lazy" className={current === i ? "on" : ""} />
+                ))}
+                <span className="pv-preview-cap">{visible[current]?.category}</span>
+              </aside>
+            </>
+          )}
         </div>
       </section>
 
