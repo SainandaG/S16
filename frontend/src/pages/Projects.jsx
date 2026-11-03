@@ -111,12 +111,12 @@ export default function Projects() {
         </div>
       </section>
 
-      <section className="section pt-0">
+      <section className="section projects-list">
         <div className="container pv-grid" key={gridKey}>
           {visible.map((p, i) => (
             <button
               key={p.id}
-              className={`proj-card ${i === 0 && filter === "All" ? "feature" : ""}`}
+              className="proj-card"
               onClick={() => setViewing(i)}
               aria-label={`View ${p.title}`}
             >
@@ -125,9 +125,9 @@ export default function Projects() {
                 <span className="proj-card-tag">{p.category}</span>
               </div>
               <div className="proj-card-info">
+                <span className="proj-card-num">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="h-md">{p.title}</h3>
-                <p className="muted small">{p.location}</p>
-                {i === 0 && filter === "All" && <p className="proj-card-desc">{p.description}</p>}
+                <p className="proj-card-loc">{p.location}</p>
               </div>
             </button>
           ))}
