@@ -7,6 +7,7 @@ section becomes a folder, e.g. s16/services, so the media library is organised t
 import io
 import uuid
 from pathlib import Path
+from urllib.parse import urlparse
 
 from .config import settings
 
@@ -36,8 +37,11 @@ def cloud_enabled() -> bool:
 
 def _cloudinary():
     import cloudinary  # imported lazily so local development does not need the package configured
+    import cloudinary.uploader  # the upload and delete functions live in this submodule
 
-    cloudinary.config(cloudinary_url=settings.cloudinary_url, secure=True)
+    # cloudinary://API_KEY:API_SECRET@CLOUD_NAME -> the three values the SDK needs
+    parts = urlparse(settings.cloudinary_url)
+    cloudinary.config(cloud_name=parts.hostname, api_key=parts.username, api_secret=parts.password, secure=True)
     return cloudinary
 
 

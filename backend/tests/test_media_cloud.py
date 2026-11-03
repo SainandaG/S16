@@ -95,3 +95,11 @@ def test_delete_removes_the_image_from_cloudinary(client, cloud):
     ).json()
     assert client.delete(f"/api/admin/media/{created['id']}", headers=h).status_code == 204
     assert len(cloud.destroyed) == 1 and cloud.destroyed[0].startswith("s16/journal/")
+
+
+def test_real_cloudinary_client_exposes_uploader():
+    # guards against the upload module not being loaded (it lives in a submodule)
+    import cloudinary
+    import cloudinary.uploader  # noqa: F401
+
+    assert hasattr(cloudinary, "uploader") and hasattr(cloudinary.uploader, "upload")

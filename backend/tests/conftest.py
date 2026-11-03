@@ -8,3 +8,4 @@ os.environ["JWT_SECRET"] = "test-secret"
 os.environ["MEDIA_DIR"] = "test_media_tmp"
 os.environ["PUBLIC_SITE_URL"] = "https://example.test"
 os.environ["PUBLIC_API_URL"] = "https://api.example.test"
+os.environ["CLOUDINARY_URL"] = ""  # tests always use local storage, even when a local .env sets Cloudinary
