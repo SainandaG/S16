@@ -1,9 +1,10 @@
 /* Projects page: filter bar, editorial project index with a sticky preview, and the project viewer. */
-.filter-bar { margin-top: 40px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.page-hero.projects-hero { padding-bottom: 0; }
+.projects-hero .filter-bar { margin: 40px 0 0; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
 .filter-btn { display: inline-flex; align-items: baseline; gap: 8px; }
 .filter-count { font-size: 0.68rem; letter-spacing: 0.06em; color: var(--gold-deep); font-variant-numeric: tabular-nums; }
 
-.section.projects-list { padding: 48px 0 140px; }
+.section.projects-list { padding: 40px 0 140px; }
 .pv-wrap { display: grid; gap: 40px; grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 960px) {
   .pv-wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); gap: 72px; align-items: start; }
