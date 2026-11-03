@@ -81,3 +81,26 @@ location /api/          { proxy_pass http://127.0.0.1:8000/api/; }
 ```
 
 Submit `https://<your-domain>/sitemap.xml` in Google Search Console.
+
+## Deploy on Render
+
+`render.yaml` creates three things from this repository: a PostgreSQL database, the API (`backend`), and the website (`frontend`).
+
+**Steps**
+1. Push this repository to GitHub.
+2. In Render, choose **New → Blueprint** and select the repository. Render reads `render.yaml`.
+3. Fill in the values Render asks for:
+   - `ADMIN_EMAIL` and `ADMIN_PASSWORD`: the first admin account. Use a strong password.
+   - `CORS_ORIGINS`, `PUBLIC_SITE_URL`: the website address, for example `https://www.s16designstudio.com`.
+   - `PUBLIC_API_URL`: the API address, for example `https://s16-api.onrender.com`.
+   - `VITE_API_URL`: the same API address. The website reads it when it is built.
+4. Wait for the three services to deploy. The database and the API deploy first, then the website.
+5. Load the content once: open the **s16-api** service, go to **Shell**, and run `python -m app.seed`.
+6. Open the website, sign in at `/login` with the admin email and password, and check the admin panel.
+
+**Before the live launch**
+- **Media uploads:** Render's disk is wiped on each deploy, so uploaded images would disappear. Add a persistent disk to the API (mounted at `backend/media`), or move uploads to external storage such as Cloudinary.
+- **Plans:** the free database expires after 30 days, and free web services sleep when idle. `render.yaml` uses paid plans for both, so check the prices in Render before deploying.
+- **Domain:** in Render, add `www.s16designstudio.com` to the website service, then point the DNS records at Render as it shows. Add the API domain too if you use a custom one.
+- **Sitemap and robots:** route `/sitemap.xml` and `/robots.txt` on the website domain to the API, as described above.
+- **Passwords:** change the default admin password, and rotate it if it has ever been shared.

@@ -1,0 +1,52 @@
+# Render Blueprint: creates the PostgreSQL database, the API and the website from this repository.
+# Dashboard: New + -> Blueprint -> pick the repository. Render asks for the values marked sync: false.
+databases:
+  - name: s16-db
+    databaseName: s16
+    user: s16
+    plan: basic-256mb # free databases expire after 30 days; use a paid plan for the live site
+
+services:
+  - type: web
+    name: s16-api
+    runtime: python
+    rootDir: backend
+    plan: starter # the free plan sleeps when idle; starter keeps the API always on
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: DATABASE_URL
+        fromDatabase:
+          name: s16-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false # the first admin account, e.g. you@yourdomain.com
+      - key: ADMIN_PASSWORD
+        sync: false # strong password for the first admin
+      - key: CORS_ORIGINS
+        sync: false # the website address, e.g. https://www.s16designstudio.com
+      - key: PUBLIC_SITE_URL
+        sync: false # the website address, used for the sitemap and canonical links
+      - key: PUBLIC_API_URL
+        sync: false # the API address, e.g. https://s16-api.onrender.com
+      - key: MEDIA_DIR
+        value: media
+
+  - type: web
+    name: s16-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        sync: false # the API address, e.g. https://s16-api.onrender.com (read when the site is built)
