@@ -5,7 +5,7 @@ import { api } from "../api.js";
 /* ---------- shared pieces ---------- */
 
 // Text input for an image URL, plus an "Upload image" button that fills it in.
-export function ImageField({ token, label, value, onChange }) {
+export function ImageField({ token, label, value, onChange, folder = "general" }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
@@ -16,6 +16,7 @@ export function ImageField({ token, label, value, onChange }) {
     try {
       const form = new FormData();
       form.append("file", file);
+      form.append("folder", folder);
       const media = await api("/api/admin/media", { method: "POST", token, body: form });
       onChange(media.url);
     } catch (err) {
@@ -107,7 +108,7 @@ export function SeoPanel({ token }) {
         <label>Site name<input value={form.siteName} onChange={(e) => set("siteName")(e.target.value)} /></label>
         <label>Public site URL<input value={form.siteUrl} placeholder="https://www.example.com" onChange={(e) => set("siteUrl")(e.target.value)} /></label>
       </div>
-      <ImageField token={token} label="Default share image (Open Graph)" value={form.defaultOgImage} onChange={set("defaultOgImage")} />
+      <ImageField token={token} label="Default share image (Open Graph)" value={form.defaultOgImage} onChange={set("defaultOgImage")} folder="seo" />
       <div className="form-row">
         <label>Twitter / X handle<input value={form.twitterHandle} placeholder="@handle" onChange={(e) => set("twitterHandle")(e.target.value)} /></label>
       </div>
@@ -250,7 +251,7 @@ export function BlogPanel({ token }) {
               <label>URL slug<input value={draft.slug} onChange={(e) => set("slug")(e.target.value)} /></label>
             </div>
             <CountedInput label="Excerpt (shown on the journal list)" value={draft.excerpt} onChange={set("excerpt")} max={500} multiline rows={2} />
-            <ImageField token={token} label="Cover image" value={draft.cover_image} onChange={set("cover_image")} />
+            <ImageField token={token} label="Cover image" value={draft.cover_image} onChange={set("cover_image")} folder="journal" />
             <div className="form-row">
               <label>Tags (comma-separated)<input value={draft.tags} onChange={(e) => set("tags")(e.target.value)} /></label>
               <label>Status
@@ -275,7 +276,7 @@ export function BlogPanel({ token }) {
             <CountedInput label="SEO title (leave blank to use the post title)" value={draft.seo_title} onChange={set("seo_title")} max={60} />
             <CountedInput label="Meta description" value={draft.seo_description} onChange={set("seo_description")} max={160} multiline rows={2} />
             <CountedInput label="Keywords (comma-separated)" value={draft.seo_keywords} onChange={set("seo_keywords")} max={300} />
-            <ImageField token={token} label="Share image (leave blank to use the cover)" value={draft.og_image} onChange={set("og_image")} />
+            <ImageField token={token} label="Share image (leave blank to use the cover)" value={draft.og_image} onChange={set("og_image")} folder="journal" />
             <label className="check"><input type="checkbox" checked={!!draft.noindex} onChange={(e) => set("noindex")(e.target.checked)} /> Hide from search engines</label>
 
             <div className="btn-row">
@@ -288,68 +289,6 @@ export function BlogPanel({ token }) {
             {msg.text && <p className={msg.type === "ok" ? "success" : "error"}>{msg.text}</p>}
           </>
         )}
-      </div>
-    </div>
-  );
-}
-
-/* ---------- Media library ---------- */
-export function MediaPanel({ token }) {
-  const [files, setFiles] = useState([]);
-  const [busy, setBusy] = useState(false);
-  const [msg, setMsg] = useState({ type: "", text: "" });
-
-  const load = () => api("/api/admin/media", { token }).then(setFiles).catch((e) => setMsg({ type: "error", text: e.message }));
-  useEffect(() => { load(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  async function upload(list) {
-    setBusy(true);
-    setMsg({ type: "", text: "" });
-    try {
-      for (const file of Array.from(list)) {
-        const form = new FormData();
-        form.append("file", file);
-        await api("/api/admin/media", { method: "POST", token, body: form });
-      }
-      setMsg({ type: "ok", text: "Uploaded." });
-      load();
-    } catch (e) {
-      setMsg({ type: "error", text: e.message });
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function remove(file) {
-    if (!window.confirm(`Delete ${file.original_name}? Pages still using this image will show a broken picture.`)) return;
-    try {
-      await api(`/api/admin/media/${file.id}`, { method: "DELETE", token });
-      load();
-    } catch (e) {
-      setMsg({ type: "error", text: e.message });
-    }
-  }
-
-  return (
-    <div>
-      <div className="list-head">
-        <h2>Media</h2>
-        <label className="btn btn-sm btn-gold">
-          {busy ? "Uploading…" : "Upload images"}
-          <input type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif" hidden onChange={(e) => upload(e.target.files)} />
-        </label>
-      </div>
-      <p className="muted small">JPG, PNG, WebP or GIF, up to 8 MB each. Click a picture to copy its link.</p>
-      {msg.text && <p className={msg.type === "ok" ? "success" : "error"}>{msg.text}</p>}
-      <div className="media-grid">
-        {files.map((f) => (
-          <div key={f.id} className="media-item">
-            <img src={f.url} alt={f.original_name} onClick={() => navigator.clipboard?.writeText(f.url)} />
-            <p className="small muted">{f.original_name}</p>
-            <button className="btn btn-sm btn-danger" onClick={() => remove(f)}>Delete</button>
-          </div>
-        ))}
-        {files.length === 0 && <p className="muted">No images uploaded yet.</p>}
       </div>
     </div>
   );
@@ -447,7 +386,7 @@ export function ServicesPanel({ token }) {
               Points (one per line)
               <textarea rows={7} value={draft.itemsText} onChange={(e) => set("itemsText")(e.target.value)} placeholder={"Architectural design and space planning.\nResidential and villa design."} />
             </label>
-            <ImageField token={token} label="Photo" value={draft.image_url} onChange={set("image_url")} />
+            <ImageField token={token} label="Photo" value={draft.image_url} onChange={set("image_url")} folder="services" />
             <label className="check">
               <input type="checkbox" checked={!!draft.published} onChange={(e) => set("published")(e.target.checked)} />
               Show on the website

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { api } from "../api.js";
-import { BlogPanel, MediaPanel, SeoPanel, ServicesPanel, AccountPanel, ImageField, CountedInput } from "./panels.jsx";
+import { BlogPanel, SeoPanel, ServicesPanel, AccountPanel, ImageField, CountedInput } from "./panels.jsx";
 
 const TOKEN_KEY = "s16_admin_token";
 
@@ -81,7 +81,7 @@ export default function Admin() {
               { name: "title", label: "Title" },
               { name: "category", label: "Category", type: "select", options: ["Villas", "Interiors", "Commercial"] },
               { name: "location", label: "Location" },
-              { name: "image_url", label: "Image URL" },
+              { name: "image_url", label: "Photo", type: "image", folder: "projects" },
               { name: "description", label: "Description", type: "textarea" },
               { name: "sort_order", label: "Sort order", type: "number" },
               { name: "published", label: "Published", type: "checkbox" },
@@ -267,7 +267,7 @@ export function PagesPanel({ token }) {
             <CountedInput label="SEO title (blank = page title + site suffix)" value={draft.seo_title} onChange={(v) => setDraft({ ...draft, seo_title: v })} max={60} />
             <CountedInput label="Meta description" value={draft.meta_description} onChange={(v) => setDraft({ ...draft, meta_description: v })} max={160} multiline rows={2} />
             <CountedInput label="Keywords (comma-separated)" value={draft.seo_keywords} onChange={(v) => setDraft({ ...draft, seo_keywords: v })} max={300} />
-            <ImageField token={token} label="Share image (Open Graph)" value={draft.og_image} onChange={(v) => setDraft({ ...draft, og_image: v })} />
+            <ImageField token={token} label="Share image (Open Graph)" value={draft.og_image} onChange={(v) => setDraft({ ...draft, og_image: v })} folder="pages" />
             <label>Canonical URL (blank = this page's address)<input value={draft.canonical_url} onChange={(e) => setDraft({ ...draft, canonical_url: e.target.value })} /></label>
             <label className="check">
               <input type="checkbox" checked={draft.noindex} onChange={(e) => setDraft({ ...draft, noindex: e.target.checked })} />
@@ -363,7 +363,17 @@ export function CrudPanel({ token, path, title, columns, fields, defaults }) {
 
       {form && (
         <form className="card form" onSubmit={save}>
-          {fields.map((f) => (
+          {fields.map((f) =>
+            f.type === "image" ? (
+              <ImageField
+                key={f.name}
+                token={token}
+                label={f.label}
+                folder={f.folder}
+                value={form[f.name] ?? ""}
+                onChange={(v) => setForm({ ...form, [f.name]: v })}
+              />
+            ) : (
             <label key={f.name} className={f.type === "checkbox" ? "check" : ""}>
               {f.type === "checkbox" ? (
                 <>
@@ -393,7 +403,8 @@ export function CrudPanel({ token, path, title, columns, fields, defaults }) {
                 </>
               )}
             </label>
-          ))}
+            )
+          )}
           <div className="btn-row">
             <button className="btn btn-gold">{editId ? "Update" : "Create"}</button>
             <button type="button" className="btn" onClick={() => setForm(null)}>

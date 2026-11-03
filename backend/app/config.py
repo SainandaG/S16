@@ -13,7 +13,8 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:5173"
     public_site_url: str = "http://localhost:5173"  # used for sitemap.xml and canonical URLs
     public_api_url: str = "http://localhost:8000"  # base URL used to build media links
-    media_dir: str = "media"  # where uploaded images are stored
+    media_dir: str = "media"  # where uploaded images are stored when Cloudinary is not configured
+    cloudinary_url: str = ""  # e.g. cloudinary://API_KEY:API_SECRET@CLOUD_NAME; empty = local storage
     media_max_mb: int = 8
 
     @property

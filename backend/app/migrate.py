@@ -20,6 +20,12 @@ ADDITIONS = {
         "items": "JSON",
         "image_url": "VARCHAR(500)",
     },
+    "media_files": {
+        "folder": "VARCHAR(60)",
+        "storage": "VARCHAR(20)",
+        "public_id": "VARCHAR(255)",
+        "url": "VARCHAR(600)",
+    },
 }
 
 

@@ -65,7 +65,7 @@ Build the frontend with `VITE_API_URL=https://your-domain` set, then `npm run bu
 The admin at `/admin` manages:
 - **Pages:** content blocks, plus per-page SEO (title, description, keywords, share image, canonical URL, noindex).
 - **Blog (Journal):** Markdown articles with cover image, tags, draft/published status, and SEO fields. Drafts are never shown on the site.
-- **Media:** image uploads (JPG, PNG, WebP, GIF; up to `MEDIA_MAX_MB`). Each file's bytes are checked, so renamed non-images are rejected. Files are stored in `MEDIA_DIR` and served at `/media/<file>`.
+- **Media:** image uploads (JPG, PNG, WebP, GIF; up to `MEDIA_MAX_MB`). Each file's bytes are checked, so renamed non-images are rejected. Images go to Cloudinary when `CLOUDINARY_URL` is set, one folder per section (services, about, projects, journal, ...). Without it they are stored in `MEDIA_DIR`.
 - **SEO defaults:** site title suffix, default description and keywords, share image, business details (used for Google's structured data).
 - Projects, services, site settings, redirects, and enquiries (as before).
 
@@ -99,7 +99,7 @@ Submit `https://<your-domain>/sitemap.xml` in Google Search Console.
 6. Open the website, sign in at `/login` with the admin email and password, and check the admin panel.
 
 **Before the live launch**
-- **Media uploads:** Render's disk is wiped on each deploy, so uploaded images would disappear. Add a persistent disk to the API (mounted at `backend/media`), or move uploads to external storage such as Cloudinary.
+- **Media uploads:** images are stored in Cloudinary, one folder per section (`s16/services`, `s16/about`, `s16/projects`, ...). Set `CLOUDINARY_URL` in Render. Without it, images are saved on the server disk, which Render wipes on each deploy.
 - **Plans:** the free database expires after 30 days, and free web services sleep when idle. `render.yaml` uses paid plans for both, so check the prices in Render before deploying.
 - **Domain:** in Render, add `www.s16designstudio.com` to the website service, then point the DNS records at Render as it shows. Add the API domain too if you use a custom one.
 - **Sitemap and robots:** route `/sitemap.xml` and `/robots.txt` on the website domain to the API, as described above.

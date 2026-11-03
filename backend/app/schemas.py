@@ -69,6 +69,8 @@ class MediaOut(ORMModel):
     content_type: str
     size_bytes: int
     url: str
+    folder: str = "general"
+    storage: str = "local"
     created_at: datetime | None = None
 
 

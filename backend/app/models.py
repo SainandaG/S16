@@ -128,6 +128,10 @@ class MediaFile(Base):
     original_name: Mapped[str] = mapped_column(String(255), default="")
     content_type: Mapped[str] = mapped_column(String(100), default="")
     size_bytes: Mapped[int] = mapped_column(Integer, default=0)
+    folder: Mapped[str] = mapped_column(String(60), default="general")  # section of the site
+    storage: Mapped[str] = mapped_column(String(20), default="local")  # "cloudinary" or "local"
+    public_id: Mapped[str] = mapped_column(String(255), default="")  # Cloudinary id, for deletion
+    url: Mapped[str] = mapped_column(String(600), default="")  # where the image is served from
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 

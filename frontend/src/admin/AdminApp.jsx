@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { api } from "../api.js";
-import { BlogPanel, MediaPanel, SeoPanel, ServicesPanel, AccountPanel } from "./panels.jsx";
+import { BlogPanel, SeoPanel, ServicesPanel, AccountPanel } from "./panels.jsx";
+import MediaPanel from "./MediaLibrary.jsx";
 import { CrudPanel, PagesPanel, LeadsPanel, SettingsPanel } from "./Admin.jsx";
 import "./admin.css";
 

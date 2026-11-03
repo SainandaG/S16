@@ -36,6 +36,8 @@ services:
         sync: false # the API address, e.g. https://s16-api.onrender.com
       - key: MEDIA_DIR
         value: media
+      - key: CLOUDINARY_URL
+        sync: false # from the Cloudinary dashboard: "API environment variable" (cloudinary://...)
 
   - type: web
     name: s16-web

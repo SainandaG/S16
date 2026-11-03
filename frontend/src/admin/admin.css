@@ -119,3 +119,15 @@
 .adm .image-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .adm .thumb { width: 96px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid var(--a-line); }
 .adm .card { background: var(--a-card); border: 1px solid var(--a-line); border-radius: 14px; padding: 22px; }
+
+/* media library: section chips and upload bar */
+.adm .upload-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.adm .upload-bar label { display: flex; align-items: center; gap: 8px; }
+.adm .upload-bar select { width: auto; min-width: 180px; }
+.adm .folder-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 22px; }
+.adm .folder-chip { background: var(--a-card); border: 1px solid var(--a-line); border-radius: 999px; padding: 7px 14px; font: 600 0.8rem Manrope, sans-serif; color: var(--a-ink); cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+.adm .folder-chip span { background: #efe9dc; color: #7a5b2c; border-radius: 999px; padding: 1px 8px; font-size: 0.72rem; }
+.adm .folder-chip.on { background: var(--a-ink); border-color: var(--a-ink); color: #fff; }
+.adm .folder-chip.on span { background: var(--a-gold); color: #14130f; }
+.adm .media-meta { display: grid; gap: 4px; margin: 0; }
+.adm .media-tag { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--a-gold); font-weight: 700; }

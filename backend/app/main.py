@@ -10,6 +10,7 @@ from .config import settings
 from .db import Base, engine
 from .routers_admin import auth_router, router as admin_router
 from .routers_auth import router as customer_auth_router
+from .routers_media import router as media_router
 from .routers_public import router as public_router
 
 
@@ -35,6 +36,7 @@ app.include_router(public_router)
 app.include_router(auth_router)
 app.include_router(customer_auth_router)
 app.include_router(admin_router)
+app.include_router(media_router)
 
 # uploaded images, e.g. /media/<uuid>.jpg
 Path(settings.media_dir).mkdir(parents=True, exist_ok=True)
