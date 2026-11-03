@@ -1,0 +1,540 @@
+{
+  "source": "https://www.s16designstudio.com/",
+  "site": {
+    "name": "S16 Design Studio",
+    "legalName": "S16 Design Studio Pvt Ltd",
+    "tagline": "Architecture as Art",
+    "philosophy": "From Structure to Soul",
+    "titleTag": "S16 Design Studio – Luxury Architecture & Interiors, Hyderabad",
+    "metaDescription": "S16 Design Studio Pvt Ltd — Hyderabad's premier luxury architecture and interior design firm. ISO 9001:2015 certified, COA Registered, RERA Approved.",
+    "ogDescription": "Designing spaces beyond imagination. Bespoke villas, smart commercial environments, and turnkey interior projects in Hyderabad.",
+    "copyright": "© 2026 S16 Design Studio Pvt Ltd. All rights reserved.",
+    "tech": "React SPA (Vite build, React Router, Tailwind CSS, Framer Motion, three.js for 3D view)"
+  },
+  "contact": {
+    "whatsapp": {
+      "number": "+91 81232 44152",
+      "intlFormat": "918123244152",
+      "clickLink": "https://wa.me/message/ZXHAJ7GBJXMSK1",
+      "resolvesTo": "https://api.whatsapp.com/message/ZXHAJ7GBJXMSK1 (phone=918123244152)"
+    },
+    "phones": [
+      "+91 87908 72287",
+      "+91 81232 44152"
+    ],
+    "email": "Info@s16designstudio.com",
+    "headquarters": "Balaji Arcade, Ground Floor, TNGO Colony phase-2, Goldcrest School Road, Gachibowli 500046, Telangana, Hyderabad",
+    "mapLink": "https://maps.google.com/?q=Balaji+Arcade,+Ground+Floor,+TNGO+Colony+phase-2,+Goldcrest+School+Road,+Gachibowli+500046,+Telangana,+Hyderabad",
+    "servingCities": [
+      "Bangalore",
+      "Hyderabad",
+      "Vijayawada",
+      "Vizag"
+    ],
+    "social": {
+      "instagram": "https://www.instagram.com/space16_designstudio",
+      "whatsappBusiness": "https://wa.me/message/ZXHAJ7GBJXMSK1"
+    },
+    "contactFormBackend": "Google Apps Script endpoint (script.google.com/macros/s/.../exec)",
+    "contactFormResponse": "Our team will reach out to you within 24 hours."
+  },
+  "brand": {
+    "logo": "assets/logo.png (280x271 PNG; rendered with brightness-0 filter, inverted to white on dark backgrounds)",
+    "favicon": "assets/favicon.png",
+    "colors": {
+      "accentGold": "#C8A96A",
+      "goldAlt": "#D4AF37",
+      "darkBackground": "#0A0A0A",
+      "textDark": "#111827",
+      "textGray": "#9CA3AF",
+      "lightBackground": "#F9FAFB",
+      "border": "#E5E7EB",
+      "white": "#FFFFFF",
+      "black": "#000000"
+    },
+    "fonts": [
+      "Outfit (headings)",
+      "Plus Jakarta Sans (body)"
+    ],
+    "themes": "Light and dark mode toggle"
+  },
+  "navigation": [
+    {
+      "name": "Home",
+      "path": "/"
+    },
+    {
+      "name": "About",
+      "path": "/about"
+    },
+    {
+      "name": "Services",
+      "path": "/services"
+    },
+    {
+      "name": "Projects",
+      "path": "/projects"
+    },
+    {
+      "name": "Our Process",
+      "path": "/process"
+    },
+    {
+      "name": "Contact",
+      "path": "/contact"
+    },
+    {
+      "name": "Journal",
+      "path": "/blog"
+    }
+  ],
+  "pages": {
+    "home": {
+      "hero": {
+        "eyebrow": "S16 Design Studio · Architecture · Interiors · Turnkey",
+        "title": "Spaces Designed with Purpose.",
+        "body": "S16 Design Studio is an architecture, interior and turnkey studio transforming spaces into meaningful experiences."
+      },
+      "stats": [
+        {
+          "value": "6+",
+          "label": "Years of Excellence"
+        },
+        {
+          "value": "50+",
+          "label": "Design Experts"
+        },
+        {
+          "value": "100%",
+          "label": "Client Satisfaction"
+        }
+      ],
+      "certifications": [
+        {
+          "title": "ISO 9001:2015",
+          "desc": "Quality Management Certified"
+        },
+        {
+          "title": "COA Registered",
+          "desc": "Council of Architecture"
+        },
+        {
+          "title": "RERA Approved",
+          "desc": "Compliant Projects"
+        }
+      ],
+      "cta": "Explore Projects",
+      "consultationCta": "Book Consultation",
+      "services": {
+        "heading": "Architecture, Interiors & Execution"
+      },
+      "intro": {
+        "eyebrow": "Our Philosophy",
+        "title": "Every space has a purpose, every detail has a reason.",
+        "body": "We design around the people who will live and work in a space: their routines, their taste and the way light moves through the day. Then we carry that thinking through to the last fitting.",
+        "image": "https://images.unsplash.com/photo-1618219740975-d40978bb7378?auto=format&fit=crop&w=1600&q=80",
+        "caption": "Living room, Jubilee Hills"
+      },
+      "gallery": [
+        {
+          "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+          "title": "Azure Villa",
+          "caption": "Jubilee Hills · 5-BHK villa"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80",
+          "title": "Modular Kitchen",
+          "caption": "Bespoke joinery and stone"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=1600&q=80",
+          "title": "Zenith Penthouse",
+          "caption": "Banjara Hills · Interiors"
+        }
+      ]
+    },
+    "about": {
+      "heading": "16 Spaces. One Vision. Designed Around You.",
+      "paragraphs": [
+        "S16 Design Studio is an architecture, interior design and turnkey execution studio focused on transforming spaces into meaningful experiences.",
+        "We believe that great design is not just about aesthetics; it is about understanding people, their lifestyles, functionality and the finer details that make a space feel like home.",
+        "Our approach combines creativity, architectural thinking, contemporary aesthetics and practical execution to create spaces that are timeless, elegant and purposeful.",
+        "From residential villas and apartments to commercial spaces, we aim to deliver thoughtfully designed environments with a strong emphasis on quality, detailing and craftsmanship."
+      ],
+      "philosophy": {
+        "statement": "Every space has a purpose, every detail has a reason, and every design tells a story.",
+        "points": [
+          "Thoughtful and functional design.",
+          "Attention to every detail.",
+          "Timeless aesthetics over temporary trends.",
+          "Quality materials and craftsmanship.",
+          "A seamless journey from concept to completion.",
+          "Creating spaces that reflect individual personalities."
+        ]
+      },
+      "message": {
+        "title": "S16 Design Studio – Spaces Designed with Purpose.",
+        "body": "We don’t just design spaces. We create environments that reflect your vision, enhance your lifestyle and stand the test of time."
+      },
+      "hero": {
+        "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=80",
+        "caption": "Architecture and interiors, designed together"
+      },
+      "gallery": [
+        {
+          "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+          "title": "Quiet materials",
+          "caption": "Warm timber, honest stone"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?auto=format&fit=crop&w=1600&q=80",
+          "title": "Old and new",
+          "caption": "Heritage restoration, Road No. 12"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=1600&q=80",
+          "title": "Public rooms",
+          "caption": "Hospitality lobby, Madhapur"
+        }
+      ],
+      "kpis": [
+        {
+          "value": "150+",
+          "label": "Projects Delivered"
+        },
+        {
+          "value": "6+",
+          "label": "Years of Excellence"
+        },
+        {
+          "value": "50+",
+          "label": "Design Experts"
+        },
+        {
+          "value": "100%",
+          "label": "Client Satisfaction"
+        }
+      ],
+      "experience": {
+        "title": "Experience across diverse projects",
+        "items": [
+          "Premium villas with customized luxury interiors",
+          "Functional and elegant 3BHK residences",
+          "Smart and space-optimized 2BHK homes",
+          "Well-planned commercial spaces"
+        ]
+      },
+      "mission": "To deliver world-class architecture and interior design with an unwavering commitment to quality, innovation, and client satisfaction — transforming dreams into extraordinary realities.",
+      "vision": "To be South India's most sought-after luxury design practice — known for creating spaces that evoke emotion, stand the test of time, and enrich the lives of those who inhabit them across Bangalore, Hyderabad, Vijayawada, and Vizag."
+    },
+    "services": {
+      "heading": "Design Services",
+      "subheading": "Comprehensive solutions for every aspect of luxury architecture and interior design, from concept to completion."
+    },
+    "portfolio": {
+      "heading": "The Work",
+      "filters": [
+        "All",
+        "Residential",
+        "Villas",
+        "Commercial"
+      ]
+    },
+    "process": {
+      "heading": "Our Process",
+      "subheading": "The S16 Methodology",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Understand",
+          "description": "Understanding the client’s vision, lifestyle and requirements."
+        },
+        {
+          "number": "02",
+          "title": "Strategize",
+          "description": "Planning the space, functionality and budget."
+        },
+        {
+          "number": "03",
+          "title": "Conceptualize",
+          "description": "Developing design concepts and mood boards."
+        },
+        {
+          "number": "04",
+          "title": "Design",
+          "description": "Creating detailed architectural and interior designs."
+        },
+        {
+          "number": "05",
+          "title": "Visualize",
+          "description": "Bringing concepts to life through realistic 3D renders."
+        },
+        {
+          "number": "06",
+          "title": "Execute",
+          "description": "Converting designs into reality through quality execution."
+        },
+        {
+          "number": "07",
+          "title": "Deliver",
+          "description": "Ensuring detailing, finishing and client satisfaction."
+        }
+      ],
+      "turnkey": {
+        "eyebrow": "Turnkey",
+        "title": "Your Turnkey Solution Is Ready",
+        "tagline": "We Design. We Build. You Just Turn The Key.",
+        "line": "From first concept to final detail - Architecture, Interiors & Execution under one roof.",
+        "checks": [
+          "100% Complete",
+          "Quality Checked",
+          "Ready to Move In"
+        ]
+      },
+      "strip": [
+        {
+          "image": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1600&q=80",
+          "title": "Study",
+          "caption": "Sketches and mood boards"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80",
+          "title": "Visualise",
+          "caption": "Photoreal 3D renders"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+          "title": "Build",
+          "caption": "Site supervision and finishing"
+        }
+      ]
+    },
+    "3dView": {
+      "features": [
+        {
+          "title": "Real-Time Rendering",
+          "desc": "See accurate material finishes and lighting with photorealistic quality in real time."
+        },
+        {
+          "title": "Full Walkthrough",
+          "desc": "Navigate every room and corner of your design before the first brick is laid."
+        },
+        {
+          "title": "Customizable",
+          "desc": "Swap materials, colors, and furniture instantly to explore design possibilities."
+        }
+      ]
+    },
+    "contactPage": {
+      "heading": "Conversation",
+      "body": "Have a project in mind? We'd love to hear about it. Operating across Bangalore, Hyderabad, Vijayawada, and Vizag, we're ready to build something extraordinary together.",
+      "formHeading": "Tell us about your project and we'll get back to you within 24 hours.",
+      "formSubmitLabel": "Submit Quote Request",
+      "formSuccess": "Our team will reach out to you within 24 hours.",
+      "formError": "Failed to send request. Please try again later.",
+      "formFields": {
+        "projectTypes": [
+          "Apartment Interior",
+          "Commercial Office",
+          "Retail Space"
+        ],
+        "budgetRanges": [
+          "₹50L – ₹1Cr",
+          "₹1Cr – ₹2Cr",
+          "₹2Cr – ₹5Cr"
+        ],
+        "timelines": [
+          "1–3 Months",
+          "3–6 Months",
+          "6–12 Months",
+          "12+ Months"
+        ]
+      },
+      "ctaBlock": "Ready to transform your vision into reality? Schedule a consultation with our expert architects and designers today.",
+      "chat": "Send Message",
+      "image": {
+        "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+        "caption": "Book a consultation at our studio in Hyderabad"
+      }
+    }
+  },
+  "footer": {
+    "description": "Hyderabad's premier luxury architecture and interior design firm. We operate at the intersection of precision engineering and artistic sensibility.",
+    "quickLinks": [
+      "About Us",
+      "Portfolio",
+      "Our Process",
+      "3D View Experience",
+      "Contact Us"
+    ],
+    "legal": [
+      "Privacy Policy"
+    ]
+  },
+  "projects": [
+    {
+      "title": "Azure Villa",
+      "category": "Villas",
+      "location": "Jubilee Hills, Hyderabad",
+      "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+      "description": "A sprawling 5-BHK luxury villa blending contemporary architecture with Vastu-compliant design. Every corner reflects our commitment to detail, from the Italian marble floors to the custom-lit ceiling coffers."
+    },
+    {
+      "title": "Lumina Workspace",
+      "category": "Commercial",
+      "location": "HITEC City, Hyderabad",
+      "image": "https://images.unsplash.com/photo-1497366216548-37526070297c",
+      "description": "A 12,000 sq ft corporate office designed to inspire innovation. Biophilic design meets smart-home integration in this award-winning commercial project."
+    },
+    {
+      "title": "Zenith Penthouse",
+      "category": "Interiors",
+      "location": "Banjara Hills, Hyderabad",
+      "image": "https://images.unsplash.com/photo-1593696140826-c58b021acf8b",
+      "description": "A sky-high penthouse transformed into a sanctuary of calm luxury. Neutral palettes, leather accents, and dramatic lighting create an atmosphere of effortless sophistication."
+    },
+    {
+      "title": "The Olive Residence",
+      "category": "Villas",
+      "location": "Gachibowli, Hyderabad",
+      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
+      "description": "An 8,000 sq ft villa characterized by clean lines and warm materials. Expansive glazing brings the outdoors in, creating a seamless connection with the manicured landscape."
+    },
+    {
+      "title": "Heritage Retreat",
+      "category": "Interiors",
+      "location": "Road No. 12, Hyderabad",
+      "image": "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20",
+      "description": "A sensitive restoration blending heritage architectural elements with contemporary comfort systems — proving that old and new can coexist in perfect harmony."
+    },
+    {
+      "title": "The Crystal Lobby",
+      "category": "Commercial",
+      "location": "Madhapur, Hyderabad",
+      "image": "https://images.unsplash.com/photo-1604328698692-f76ea9498e76",
+      "description": "A hospitality lobby that commands attention from the first step in. Crystal chandeliers, onyx feature walls, and bespoke art installations define this landmark commercial interior."
+    }
+  ],
+  "seo": {
+    "siteName": "S16 Design Studio",
+    "titleSuffix": " | S16 Design Studio",
+    "defaultTitle": "S16 Design Studio – Luxury Architecture & Interiors, Hyderabad",
+    "defaultDescription": "S16 Design Studio is an architecture, interior and turnkey studio in Hyderabad. ISO 9001:2015 certified, COA Registered, RERA Approved.",
+    "defaultKeywords": "architecture studio Hyderabad, interior design Hyderabad, luxury villa design, turnkey interiors, modular kitchen Hyderabad, Vastu consultation",
+    "defaultOgImage": "",
+    "twitterHandle": "",
+    "organization": {
+      "name": "S16 Design Studio Pvt Ltd",
+      "telephone": "+91 81232 44152",
+      "email": "Info@s16designstudio.com",
+      "city": "Hyderabad",
+      "region": "Telangana",
+      "country": "IN"
+    }
+  },
+  "pageSeo": {
+    "home": {
+      "seo_title": "S16 Design Studio – Architecture & Interiors in Hyderabad",
+      "seo_keywords": "architecture studio Hyderabad, luxury interiors, turnkey home construction"
+    },
+    "about": {
+      "seo_title": "About S16 Design Studio",
+      "seo_keywords": "architecture firm Hyderabad, design studio about, S16 Design Studio team"
+    },
+    "services": {
+      "seo_title": "Architecture, Interior Design & Turnkey Services",
+      "seo_keywords": "villa design Hyderabad, interior design services, modular kitchen, turnkey execution"
+    },
+    "portfolio": {
+      "seo_title": "Projects – Villas, Residences & Commercial Interiors",
+      "seo_keywords": "villa projects Hyderabad, interior portfolio, commercial office interiors"
+    },
+    "process": {
+      "seo_title": "Our Design Process – From Understanding to Delivery",
+      "seo_keywords": "interior design process, 3D visualisation, architecture workflow"
+    },
+    "contact": {
+      "seo_title": "Contact S16 Design Studio – Book a Consultation",
+      "seo_keywords": "contact interior designer Hyderabad, book consultation, site visit"
+    }
+  },
+  "pillars": [
+    {
+      "title": "Architecture Design",
+      "description": "Bespoke structural concepts that blend functional precision with luxury aesthetics. From concept sketches to permit-ready drawings, we handle every detail.",
+      "items": [
+        "Concept Development",
+        "Structural Planning",
+        "Permit Documentation",
+        "3D Visualization"
+      ],
+      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "title": "Interior Design",
+      "description": "Curated interior spaces that reflect your unique personality through premium materials, custom furniture, and bespoke lighting compositions.",
+      "items": [
+        "Space Planning",
+        "Material & Finish Selection",
+        "Custom Furniture",
+        "Lighting Design"
+      ],
+      "image": "https://images.unsplash.com/photo-1618219740975-d40978bb7378?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "title": "Residential Villas",
+      "description": "Luxury villa design tailored to your lifestyle — where grandeur meets comfort, and every corner tells a story of refined elegance.",
+      "items": [
+        "Luxury Villas",
+        "Bungalows",
+        "Apartments",
+        "Penthouse Suites"
+      ],
+      "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "title": "Commercial Spaces",
+      "description": "Sophisticated commercial environments designed to impress clients, inspire teams, and reinforce your brand identity at every touchpoint.",
+      "items": [
+        "Corporate Offices",
+        "Retail Stores",
+        "Hospitality Spaces",
+        "Showrooms"
+      ],
+      "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "title": "Turnkey Execution",
+      "description": "End-to-end delivery from the first concept to the final detail: interiors, civil and renovation works, procurement and site supervision, under one roof.",
+      "items": [
+        "Complete interior execution",
+        "Civil and renovation works",
+        "Material selection and procurement",
+        "Project coordination and site supervision"
+      ],
+      "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "title": "Smart Home Integration",
+      "description": "Seamless integration of cutting-edge automation for modern, intelligent living. Control your entire space from a single interface.",
+      "items": [
+        "Home Automation",
+        "Smart Lighting",
+        "Security Systems",
+        "Climate Control"
+      ],
+      "image": "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "title": "Vastu Integration",
+      "description": "Harmonizing spaces with ancient Vastu Shastra principles to ensure positive energy flow, prosperity, and well-being for inhabitants.",
+      "items": [
+        "Vastu Consultation",
+        "Floor Plan Analysis",
+        "Remedial Solutions",
+        "New Design Compliance"
+      ],
+      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+    }
+  ]
+}
