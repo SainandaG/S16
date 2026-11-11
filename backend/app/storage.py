@@ -19,6 +19,7 @@ FOLDERS = {
     "projects": "Projects",
     "journal": "Journal",
     "pages": "Pages",
+    "clients": "Client work",
     "contact": "Contact",
     "seo": "SEO and sharing",
     "general": "General",

@@ -117,6 +117,7 @@ class LeadIn(BaseModel):
 
 class LeadOut(ORMModel, LeadIn):
     id: int
+    images: list[dict[str, Any]] = Field(default_factory=list)
     created_at: datetime | None = None
 
 

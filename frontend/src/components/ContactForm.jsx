@@ -7,15 +7,20 @@ const EMPTY = { name: "", email: "", phone: "", project_type: "", budget: "", ti
 export default function ContactForm({ fields, submitLabel, successText, errorText, heading }) {
   const [form, setForm] = useState(EMPTY);
   const [status, setStatus] = useState({ state: "idle", message: "" });
+  const [files, setFiles] = useState([]);
   const set = (key) => (e) => setForm({ ...form, [key]: e.target.value });
 
   async function submit(e) {
     e.preventDefault();
     setStatus({ state: "sending", message: "" });
+    const body = new FormData();
+    Object.entries(form).forEach(([key, value]) => body.append(key, value));
+    files.forEach((file) => body.append("files", file));
     try {
-      await api("/api/contact", { method: "POST", body: form });
+      await api("/api/contact/attachments", { method: "POST", body });
       setStatus({ state: "ok", message: successText });
       setForm(EMPTY);
+      setFiles([]);
     } catch (err) {
       setStatus({ state: "error", message: err.message || errorText });
     }
@@ -67,6 +72,19 @@ export default function ContactForm({ fields, submitLabel, successText, errorTex
           onChange={set("message")}
           placeholder="Tell us what you do and what you love to have in your home to make extra special..."
         />
+      </label>
+      <label className="field">
+        <span>Photos or plans (optional, up to 10)</span>
+        <input
+          type="file"
+          accept="image/jpeg,image/png,image/gif,image/webp"
+          multiple
+          onChange={(e) => setFiles(Array.from(e.target.files || []).slice(0, 10))}
+        />
+        <span className="muted small">
+          Attach a photo of your space or a sketch to ask whether we can take on this service.
+          {files.length > 0 && ` ${files.length} image(s) selected.`}
+        </span>
       </label>
       <input type="text" name="website" className="hp" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.website} onChange={set("website")} />
 

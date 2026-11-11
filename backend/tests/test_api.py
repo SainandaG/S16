@@ -45,7 +45,7 @@ def test_public_site_and_pages(client):
 
 def test_projects_filter_and_services(client):
     all_projects = client.get("/api/projects").json()
-    assert len(all_projects) == 6
+    assert len(all_projects) == 7  # the client project list in seed/site-content.json
     villas = client.get("/api/projects", params={"category": "Villas"}).json()
     assert villas and all(p["category"] == "Villas" for p in villas)
     assert len(client.get("/api/services").json()) == 7

@@ -564,7 +564,18 @@ export function LeadsPanel({ token }) {
                 <br />
                 <span className="small">{l.timeline}</span>
               </td>
-              <td className="msg-cell">{l.message}</td>
+              <td className="msg-cell">
+                {l.message}
+                {l.images?.length > 0 && (
+                  <div className="enquiry-images">
+                    {l.images.map((img) => (
+                      <a key={img.url} href={img.url} target="_blank" rel="noopener noreferrer">
+                        <img src={img.url} alt="Attached by the visitor" loading="lazy" />
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </td>
               <td>
                 <button className="btn btn-sm btn-danger" onClick={() => remove(l.id)}>
                   Delete

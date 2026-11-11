@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { api } from "../api.js";
 import { BlogPanel, SeoPanel, ServicesPanel, AccountPanel } from "./panels.jsx";
 import MediaPanel from "./MediaLibrary.jsx";
+import WorkspacePanel from "./WorkspacePanel.jsx";
 import { CrudPanel, PagesPanel, LeadsPanel, SettingsPanel } from "./Admin.jsx";
 import "./admin.css";
 
@@ -39,7 +40,7 @@ const NAV = [
     ],
   },
   { group: "Marketing", items: [["seo", "SEO", "⌕"], ["redirects", "Redirects", "↪"]] },
-  { group: "Business", items: [["leads", "Enquiries", "✉"]] },
+  { group: "Business", items: [["leads", "Enquiries", "✉"], ["workspace", "Client projects", "◈"]] },
   { group: "System", items: [["settings", "Site settings", "⚙"], ["account", "Account", "◉"]] },
 ];
 
@@ -190,6 +191,7 @@ export default function AdminApp() {
       />
     ),
     leads: <LeadsPanel token={token} />,
+    workspace: <WorkspacePanel token={token} />,
     settings: <SettingsPanel token={token} />,
     account: <AccountPanel token={token} />,
   };

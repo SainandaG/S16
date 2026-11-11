@@ -1,13 +1,15 @@
 from datetime import datetime, timezone
 from xml.sax.saxutils import escape
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from fastapi.responses import PlainTextResponse, Response
+from pydantic import ValidationError
 from sqlalchemy.orm import Session
 
 from . import models, schemas
 from .config import settings
 from .db import get_db
+from .routers_workspace import _save_images
 
 router = APIRouter(prefix="/api", tags=["public"])
 
@@ -133,5 +135,40 @@ def submit_contact(payload: schemas.LeadIn, db: Session = Depends(get_db)):
         return {"ok": True}
     data = payload.model_dump(exclude={"website"})
     db.add(models.Lead(**data))
+    db.commit()
+    return {"ok": True, "message": "Our team will reach out to you within 24 hours."}
+
+
+@router.post("/contact/attachments", status_code=201)
+async def submit_contact_with_images(
+    name: str = Form(""),
+    email: str = Form(""),
+    phone: str = Form(""),
+    project_type: str = Form(""),
+    budget: str = Form(""),
+    timeline: str = Form(""),
+    message: str = Form(""),
+    website: str = Form(""),
+    files: list[UploadFile] = File(default=[]),
+    db: Session = Depends(get_db),
+):
+    """Enquiry with photos or plans attached, e.g. a photo of the space or a sketch to ask whether we can take it on."""
+    if website:  # honeypot filled in: pretend success, store nothing
+        return {"ok": True}
+    try:
+        payload = schemas.LeadIn(
+            name=name.strip(),
+            email=email.strip(),
+            phone=phone.strip(),
+            project_type=project_type,
+            budget=budget,
+            timeline=timeline,
+            message=message.strip(),
+        )
+    except ValidationError as error:
+        first = error.errors()[0]
+        raise HTTPException(status_code=422, detail=f"{first['loc'][-1]}: {first['msg']}")
+    images = await _save_images(files)
+    db.add(models.Lead(**payload.model_dump(exclude={"website"}), images=images))
     db.commit()
     return {"ok": True, "message": "Our team will reach out to you within 24 hours."}

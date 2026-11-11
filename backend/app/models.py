@@ -78,6 +78,7 @@ class Lead(Base):
     budget: Mapped[str] = mapped_column(String(100), default="")
     timeline: Mapped[str] = mapped_column(String(100), default="")
     message: Mapped[str] = mapped_column(Text, default="")
+    images: Mapped[list] = mapped_column(JSON, default=list)  # photos or plans the visitor attached
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -154,3 +155,32 @@ class AdminUser(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     email: Mapped[str] = mapped_column(String(320), unique=True, index=True)
     password_hash: Mapped[str] = mapped_column(String(300))
+
+
+class ClientProject(Base):
+    """A design request or project from a customer. Progress is recorded as ProjectUpdate rows."""
+
+    __tablename__ = "client_projects"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    customer_id: Mapped[int] = mapped_column(Integer, index=True)
+    title: Mapped[str] = mapped_column(String(200))
+    brief: Mapped[str] = mapped_column(Text, default="")
+    status: Mapped[str] = mapped_column(String(30), default="requested")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+
+class ProjectUpdate(Base):
+    """One entry in a project's timeline: a note, images, a status change, or any mix."""
+
+    __tablename__ = "project_updates"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    project_id: Mapped[int] = mapped_column(Integer, index=True)
+    author_role: Mapped[str] = mapped_column(String(20))  # "customer" or "admin"
+    author_name: Mapped[str] = mapped_column(String(200))
+    note: Mapped[str] = mapped_column(Text, default="")
+    status: Mapped[str] = mapped_column(String(30), default="")
+    images: Mapped[list] = mapped_column(JSON, default=list)  # [{url, public_id, storage}]
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

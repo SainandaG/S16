@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { api } from "../api.js";
 import { getCustomerToken, setCustomerToken } from "../lib/auth.js";
 import { useCustomer } from "../hooks.js";
+import Workspace from "../components/Workspace.jsx";
 
 export default function Account() {
   const { customer, loading } = useCustomer();
@@ -72,6 +73,9 @@ export default function Account() {
             </ul>
           )}
         </div>
+      </div>
+      <div className="container ws-wrap">
+        <Workspace token={token} />
       </div>
     </section>
   );
