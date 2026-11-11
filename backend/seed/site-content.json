@@ -97,15 +97,19 @@
       },
       "stats": [
         {
-          "value": "6+",
-          "label": "Years of Excellence"
+          "value": "9+",
+          "label": "Years"
+        },
+        {
+          "value": "100+",
+          "label": "Projects Designed"
         },
         {
           "value": "50+",
-          "label": "Design Experts"
+          "label": "Projects Delivered"
         },
         {
-          "value": "100%",
+          "value": "95%",
           "label": "Client Satisfaction"
         }
       ],
@@ -199,19 +203,19 @@
       ],
       "kpis": [
         {
-          "value": "150+",
-          "label": "Projects Delivered"
+          "value": "9+",
+          "label": "Years"
         },
         {
-          "value": "6+",
-          "label": "Years of Excellence"
+          "value": "100+",
+          "label": "Projects Designed"
         },
         {
           "value": "50+",
-          "label": "Design Experts"
+          "label": "Projects Delivered"
         },
         {
-          "value": "100%",
+          "value": "95%",
           "label": "Client Satisfaction"
         }
       ],
@@ -334,14 +338,14 @@
       "formError": "Failed to send request. Please try again later.",
       "formFields": {
         "projectTypes": [
-          "Apartment Interior",
-          "Commercial Office",
-          "Retail Space"
+          "Villas",
+          "Individual Houses",
+          "Only design consultation"
         ],
         "budgetRanges": [
-          "₹50L – ₹1Cr",
-          "₹1Cr – ₹2Cr",
-          "₹2Cr – ₹5Cr"
+          "₹10L – ₹20L",
+          "₹25L – ₹30L",
+          "₹30L – ₹50L"
         ],
         "timelines": [
           "1–3 Months",
@@ -373,46 +377,53 @@
   },
   "projects": [
     {
-      "title": "Azure Villa",
+      "title": "Pushpam Woods Villas",
       "category": "Villas",
-      "location": "Jubilee Hills, Hyderabad",
+      "location": "Sarjapur, Bengaluru",
       "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-      "description": "A sprawling 5-BHK luxury villa blending contemporary architecture with Vastu-compliant design. Every corner reflects our commitment to detail, from the Italian marble floors to the custom-lit ceiling coffers."
+      "description": "A villa project in Sarjapur, Bengaluru, designed and delivered by S16 Design Studio."
     },
     {
-      "title": "Lumina Workspace",
-      "category": "Commercial",
-      "location": "HITEC City, Hyderabad",
-      "image": "https://images.unsplash.com/photo-1497366216548-37526070297c",
-      "description": "A 12,000 sq ft corporate office designed to inspire innovation. Biophilic design meets smart-home integration in this award-winning commercial project."
-    },
-    {
-      "title": "Zenith Penthouse",
-      "category": "Interiors",
-      "location": "Banjara Hills, Hyderabad",
-      "image": "https://images.unsplash.com/photo-1593696140826-c58b021acf8b",
-      "description": "A sky-high penthouse transformed into a sanctuary of calm luxury. Neutral palettes, leather accents, and dramatic lighting create an atmosphere of effortless sophistication."
-    },
-    {
-      "title": "The Olive Residence",
-      "category": "Villas",
-      "location": "Gachibowli, Hyderabad",
+      "title": "Hertigae County",
+      "category": "Residential",
+      "location": "Sarjapur, Bengaluru",
       "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
-      "description": "An 8,000 sq ft villa characterized by clean lines and warm materials. Expansive glazing brings the outdoors in, creating a seamless connection with the manicured landscape."
+      "description": "A residential project in Sarjapur, Bengaluru, designed and delivered by S16 Design Studio."
     },
     {
-      "title": "Heritage Retreat",
-      "category": "Interiors",
-      "location": "Road No. 12, Hyderabad",
+      "title": "Sri Venkateswara Villas",
+      "category": "Villas",
+      "location": "Hyderabad",
       "image": "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20",
-      "description": "A sensitive restoration blending heritage architectural elements with contemporary comfort systems — proving that old and new can coexist in perfect harmony."
+      "description": "A villa project in Hyderabad, designed and delivered by S16 Design Studio."
     },
     {
-      "title": "The Crystal Lobby",
-      "category": "Commercial",
-      "location": "Madhapur, Hyderabad",
+      "title": "Indu Villas",
+      "category": "Villas",
+      "location": "Hyderabad",
+      "image": "https://images.unsplash.com/photo-1593696140826-c58b021acf8b",
+      "description": "A villa project in Hyderabad, designed and delivered by S16 Design Studio."
+    },
+    {
+      "title": "Aparna Zenon",
+      "category": "Residential",
+      "location": "Hyderabad",
       "image": "https://images.unsplash.com/photo-1604328698692-f76ea9498e76",
-      "description": "A hospitality lobby that commands attention from the first step in. Crystal chandeliers, onyx feature walls, and bespoke art installations define this landmark commercial interior."
+      "description": "A residential project in Hyderabad, designed and delivered by S16 Design Studio."
+    },
+    {
+      "title": "Urban Rise",
+      "category": "Residential",
+      "location": "Hyderabad",
+      "image": "https://images.unsplash.com/photo-1497366216548-37526070297c",
+      "description": "A residential project in Hyderabad, designed and delivered by S16 Design Studio."
+    },
+    {
+      "title": "Individual Houses",
+      "category": "Residential",
+      "location": "Hyderabad",
+      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      "description": "Individual house designs for private clients, designed and delivered by S16 Design Studio."
     }
   ],
   "seo": {

@@ -164,7 +164,7 @@ export default function AdminApp() {
         columns={["title", "category", "location"]}
         fields={[
           { name: "title", label: "Title" },
-          { name: "category", label: "Category", type: "select", options: ["Villas", "Interiors", "Commercial"] },
+          { name: "category", label: "Category", type: "select", options: ["Villas", "Residential", "Interiors", "Commercial"] },
           { name: "location", label: "Location" },
           { name: "image_url", label: "Image URL" },
           { name: "description", label: "Description", type: "textarea" },

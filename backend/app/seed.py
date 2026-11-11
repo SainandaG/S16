@@ -69,6 +69,9 @@ def run(update: bool = False) -> None:
             _ensure_page(db, slug, title, data, description, page_seo.get(slug, {}), update)
         db.flush()
 
+        # projects: seeded once; with --update-content the seed list replaces them
+        if update:
+            db.query(models.Project).delete()
         if db.query(models.Project).count() == 0:
             for i, p in enumerate(content.get("projects", [])):
                 db.add(

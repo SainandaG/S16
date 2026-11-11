@@ -109,6 +109,9 @@ body { background: var(--bg); }
 .theme-btn { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--fg); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: border-color .3s ease; }
 .theme-btn:hover { border-color: var(--gold); }
 .theme-btn svg { width: 18px; height: 18px; }
+.mobile-menu-account { display: grid; gap: 14px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.mobile-menu-account > a:not(.btn) { font-size: 1.1rem; color: var(--fg); text-decoration: none; }
+.mobile-menu-account .btn { justify-content: center; }
 .menu-btn { width: 40px; height: 40px; background: none; border: 0; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 7px; padding: 0; }
 .menu-btn span { display: block; width: 26px; height: 1px; background: var(--fg); }
 .hide-mobile { display: none; }
@@ -154,7 +157,8 @@ body { background: var(--bg); }
 
 /* stats (dark band) */
 .stats { background: var(--band); color: var(--on-band); padding: 0 0 72px; }
-.stats-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+.stats-grid { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
 .stat { border-top: 1px solid rgba(201, 168, 108, 0.35); padding-top: 22px; text-align: center; }
 .stat strong { display: block; font-family: "Cormorant Garamond", serif; font-weight: 400; font-size: clamp(2rem, 4.5vw, 3rem); color: var(--gold); }
 .stat span { color: var(--on-band-muted); font-size: 0.85rem; }

@@ -6,7 +6,7 @@ import { Loading, PageError } from "../components/Status.jsx";
 import "./projects.css";
 
 // Filter labels shown to visitors -> category stored on each project in the database.
-const CATEGORY_FOR = { All: null, Residential: "Interiors", Villas: "Villas", Commercial: "Commercial" };
+const CATEGORY_FOR = { All: null, Residential: "Residential", Villas: "Villas", Commercial: "Commercial" };
 
 // Full-screen viewer for one project, with keyboard support (Esc, arrow keys).
 function Viewer({ items, index, onClose, onMove }) {

@@ -61,7 +61,12 @@ export default function ContactForm({ fields, submitLabel, successText, errorTex
       </div>
       <label className="field">
         <span>Message</span>
-        <textarea rows={4} value={form.message} onChange={set("message")} />
+        <textarea
+          rows={4}
+          value={form.message}
+          onChange={set("message")}
+          placeholder="Tell us what you do and what you love to have in your home to make extra special..."
+        />
       </label>
       <input type="text" name="website" className="hp" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.website} onChange={set("website")} />
 

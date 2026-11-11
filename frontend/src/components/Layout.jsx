@@ -84,6 +84,14 @@ export default function Layout() {
             </NavLink>
           ))}
         </nav>
+        <div className="mobile-menu-account">
+          {customer ? (
+            <Link to="/account" onClick={() => setMenuOpen(false)}>My account ({customer.name.split(" ")[0]})</Link>
+          ) : (
+            <Link to="/login" onClick={() => setMenuOpen(false)}>Sign in</Link>
+          )}
+          <Link to="/contact" className="btn btn-solid" onClick={() => setMenuOpen(false)}>Book Consultation</Link>
+        </div>
       </div>
 
       <main>
