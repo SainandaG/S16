@@ -4,6 +4,7 @@ import { usePage, useList } from "../hooks.js";
 import { gsap, revealIn, reduceMotion } from "../lib/motion.js";
 import { usePageHead } from "../lib/seo.js";
 import { Loading, PageError } from "../components/Status.jsx";
+import { isPhone, sized } from "../lib/images.js";
 
 const HERO_IMAGE = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2400&q=80";
 
@@ -19,6 +20,18 @@ export default function Home() {
   const data = home.data;
   const [heroSlide, setHeroSlide] = useState(0);
   const slides = data ? [HERO_IMAGE, ...data.gallery.map((g) => g.image)] : [];
+  const heroWidth = isPhone() ? 800 : 1600;
+  // start downloading the first hero photo as soon as the page is known, so it appears sooner
+  useEffect(() => {
+    if (!data) return undefined;
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = sized(HERO_IMAGE, heroWidth);
+    link.fetchPriority = "high";
+    document.head.appendChild(link);
+    return () => link.remove();
+  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (reduceMotion || slides.length < 2) return undefined;
     const t = setInterval(() => setHeroSlide((i) => (i + 1) % slides.length), 5500);
@@ -45,7 +58,7 @@ export default function Home() {
     <div ref={ref}>
       <section className="hero hero-cinema">
         {slides.map((src, i) => (
-          <div key={src} className={`hero-slide ${i === heroSlide ? "on" : ""}`} style={{ backgroundImage: `url(${src})` }} aria-hidden="true" />
+          <div key={src} className={`hero-slide ${i === heroSlide ? "on" : ""}`} style={{ backgroundImage: `url(${sized(src, heroWidth)})` }} aria-hidden="true" />
         ))}
         <div className="hero-shade" aria-hidden="true" />
         <div className="container hero-content">

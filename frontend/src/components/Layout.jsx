@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useCustomer, useSite } from "../hooks.js";
 import { jumpToTop, startSmoothScroll } from "../lib/motion.js";
+import { isPhone } from "../lib/images.js";
 import { currentTheme, toggleTheme } from "../lib/theme.js";
 import Intro from "./Intro.jsx";
 
@@ -23,7 +24,8 @@ export default function Layout() {
   const { customer } = useCustomer();
 
   // Lenis smooth scrolling for the whole site (not the admin).
-  useEffect(() => startSmoothScroll(), []);
+  // smooth wheel scrolling is for desktop; phones keep their native scrolling
+  useEffect(() => (isPhone() ? undefined : startSmoothScroll()), []);
 
   // New page -> start at the top, close the mobile menu.
   useEffect(() => {

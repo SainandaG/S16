@@ -43,7 +43,8 @@ function logoBrickPositions(src) {
 // Opening animation: bricks fly in from around the screen and gather into the S16 logo, then the logo is shown.
 // Plays once per browser session, lasts about four seconds, and any click skips it.
 export default function Intro() {
-  const [show, setShow] = useState(() => !reduceMotion && !wasSeen());
+  // Phones skip the opening animation: it delays the first content and costs the most on slow devices.
+  const [show, setShow] = useState(() => !reduceMotion && !wasSeen() && !window.matchMedia("(max-width: 767px)").matches);
   const [phase, setPhase] = useState(0); // 0 scattered, 1 assembling, 2 logo shown, 3 leaving
   const [targets, setTargets] = useState(null);
 
