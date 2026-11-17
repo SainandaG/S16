@@ -1,22 +1,26 @@
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
-import Admin from "./admin/AdminApp.jsx";
-import Home from "./pages/Home.jsx";
-import About from "./pages/About.jsx";
-import Services from "./pages/Services.jsx";
-import Projects from "./pages/Projects.jsx";
-import Process from "./pages/Process.jsx";
-import Contact from "./pages/Contact.jsx";
-import NotFound from "./pages/NotFound.jsx";
-import Blog from "./pages/Blog.jsx";
-import BlogPost from "./pages/BlogPost.jsx";
-import Account from "./pages/Account.jsx";
-import { SignIn, Register } from "./pages/Auth.jsx";
+
+// Each page is its own download, so a visitor only loads the code for the page they open.
+const Admin = lazy(() => import("./admin/AdminApp.jsx"));
+const Home = lazy(() => import("./pages/Home.jsx"));
+const About = lazy(() => import("./pages/About.jsx"));
+const Services = lazy(() => import("./pages/Services.jsx"));
+const Projects = lazy(() => import("./pages/Projects.jsx"));
+const Process = lazy(() => import("./pages/Process.jsx"));
+const Contact = lazy(() => import("./pages/Contact.jsx"));
+const NotFound = lazy(() => import("./pages/NotFound.jsx"));
+const Blog = lazy(() => import("./pages/Blog.jsx"));
+const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
+const Account = lazy(() => import("./pages/Account.jsx"));
+const SignIn = lazy(() => import("./pages/Auth.jsx").then((m) => ({ default: m.SignIn })));
+const Register = lazy(() => import("./pages/Auth.jsx").then((m) => ({ default: m.Register })));
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/admin/*" element={<Admin />} />
+      <Route path="/admin/*" element={<Suspense fallback={null}><Admin /></Suspense>} />
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />

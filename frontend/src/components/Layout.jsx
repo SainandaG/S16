@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useCustomer, useSite } from "../hooks.js";
 import { jumpToTop, startSmoothScroll } from "../lib/motion.js";
@@ -95,7 +95,9 @@ export default function Layout() {
       </div>
 
       <main>
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </main>
 
       <footer className="site-footer">
