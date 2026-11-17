@@ -4,6 +4,7 @@ import { gsap, revealIn } from "../lib/motion.js";
 import { Loading, PageError } from "../components/Status.jsx";
 import ContactForm from "../components/ContactForm.jsx";
 import { usePageHead } from "../lib/seo.js";
+import { photo } from "../lib/images.js";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -71,7 +72,7 @@ export default function Contact() {
         {data.image && (
           <div className="container contact-band">
             <figure className="contact-visual">
-              <div className="img-frame"><img src={data.image.image} alt={data.image.caption} loading="lazy" /></div>
+              <div className="img-frame"><img src={photo(data.image.image)} alt={data.image.caption} loading="lazy" /></div>
               <figcaption className="muted small">{data.image.caption}</figcaption>
             </figure>
           </div>

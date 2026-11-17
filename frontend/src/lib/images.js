@@ -10,3 +10,8 @@ export function sized(url, width) {
   u.searchParams.set("q", "70");
   return u.toString();
 }
+
+// The photo at the size this screen needs: 800px wide on phones, 1200px elsewhere.
+export function photo(url) {
+  return sized(url, isPhone() ? 800 : 1200);
+}

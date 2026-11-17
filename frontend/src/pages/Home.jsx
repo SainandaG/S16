@@ -5,6 +5,7 @@ import { gsap, revealIn, reduceMotion } from "../lib/motion.js";
 import { usePageHead } from "../lib/seo.js";
 import { Loading, PageError } from "../components/Status.jsx";
 import { isPhone, sized } from "../lib/images.js";
+import { photo } from "../lib/images.js";
 
 const HERO_IMAGE = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2400&q=80";
 
@@ -87,7 +88,7 @@ export default function Home() {
             <Link to="/about" className="link-arrow">About the studio →</Link>
           </div>
           <figure className="img-frame" data-reveal style={{ margin: 0 }}>
-            <img src={data.intro.image} alt={data.intro.caption} loading="lazy" />
+            <img src={photo(data.intro.image)} alt={data.intro.caption} loading="lazy" />
           </figure>
         </div>
       </section>
@@ -110,7 +111,7 @@ export default function Home() {
           <div className="gallery">
             {data.gallery.map((g) => (
               <figure key={g.title} data-reveal>
-                <div className="img-frame"><img src={g.image} alt={g.title} loading="lazy" /></div>
+                <div className="img-frame"><img src={photo(g.image)} alt={g.title} loading="lazy" /></div>
                 <figcaption><strong>{g.title}</strong>{g.caption}</figcaption>
               </figure>
             ))}
@@ -134,7 +135,7 @@ export default function Home() {
             {featured.map((p) => (
               <Link key={p.id} to="/projects" className="slide">
                 <div className="img-frame">
-                  {p.image_url && <img src={p.image_url} alt={p.title} loading="lazy" />}
+                  {p.image_url && <img src={photo(p.image_url)} alt={p.title} loading="lazy" />}
                 </div>
                 <p className="eyebrow">{p.category} · {p.location}</p>
                 <h3 className="h-md">{p.title}</h3>
@@ -152,7 +153,7 @@ export default function Home() {
             {serviceList.items.map((service) => (
               <article key={service.id} className="pillar" data-reveal>
                 {service.image_url && (
-                  <div className="img-frame"><img src={service.image_url} alt={service.title} loading="lazy" /></div>
+                  <div className="img-frame"><img src={photo(service.image_url)} alt={service.title} loading="lazy" /></div>
                 )}
                 <h3 className="h-md">{service.title}</h3>
                 <ul>

@@ -6,6 +6,7 @@ import { usePageHead } from "../lib/seo.js";
 import { Loading, PageError } from "../components/Status.jsx";
 import ProcessScene from "../components/ProcessScene.jsx";
 import TurnkeyScene from "../components/TurnkeyScene.jsx";
+import { photo } from "../lib/images.js";
 
 // Index of the step that is active at scroll progress p (0..1).
 const STEP_AT = [0, 0.15, 0.3, 0.45, 0.6, 0.8, 0.95];
@@ -174,7 +175,7 @@ export default function Process() {
           <div className="process-strip">
             {data.strip.map((s) => (
               <figure key={s.title} data-reveal style={{ margin: 0 }}>
-                <div className="img-frame"><img src={s.image} alt={s.title} loading="lazy" /></div>
+                <div className="img-frame"><img src={photo(s.image)} alt={s.title} loading="lazy" /></div>
                 <figcaption className="muted small" style={{ marginTop: 12 }}><strong className="serif" style={{ color: "var(--fg)", fontSize: "1.2rem", fontWeight: 500 }}>{s.title}</strong> · {s.caption}</figcaption>
               </figure>
             ))}

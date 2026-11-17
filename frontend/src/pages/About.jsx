@@ -3,6 +3,7 @@ import { usePage } from "../hooks.js";
 import { gsap, revealIn } from "../lib/motion.js";
 import { usePageHead } from "../lib/seo.js";
 import { Loading, PageError } from "../components/Status.jsx";
+import { photo } from "../lib/images.js";
 
 export default function About() {
   const ref = useRef(null);
@@ -23,7 +24,7 @@ export default function About() {
     <div ref={ref}>
       {/* full-bleed opener */}
       <section className="about-hero">
-        <div className="about-hero-img"><img src={data.hero.image} alt={data.hero.caption} /></div>
+        <div className="about-hero-img"><img src={photo(data.hero.image)} alt={data.hero.caption} /></div>
         <div className="about-hero-shade" aria-hidden="true" />
         <div className="container about-hero-copy">
           <p className="eyebrow light">About the Studio</p>
@@ -101,7 +102,7 @@ export default function About() {
           <div className="gallery">
             {data.gallery.map((g) => (
               <figure key={g.title} data-reveal>
-                <div className="img-frame"><img src={g.image} alt={g.title} loading="lazy" /></div>
+                <div className="img-frame"><img src={photo(g.image)} alt={g.title} loading="lazy" /></div>
                 <figcaption><strong>{g.title}</strong>{g.caption}</figcaption>
               </figure>
             ))}

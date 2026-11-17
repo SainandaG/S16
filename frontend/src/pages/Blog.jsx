@@ -4,6 +4,7 @@ import { useList } from "../hooks.js";
 import { usePageHead } from "../lib/seo.js";
 import { Loading, PageError } from "../components/Status.jsx";
 import "./journal.css";
+import { photo } from "../lib/images.js";
 
 const LISTING_HEAD = {
   title: "Journal",
@@ -20,7 +21,7 @@ function Cover({ post, large = false }) {
   return (
     <div className={`jr-cover ${large ? "jr-cover-lg" : ""}`}>
       {post.cover_image && !broken ? (
-        <img src={post.cover_image} alt={post.title} loading="lazy" onError={() => setBroken(true)} />
+        <img src={photo(post.cover_image)} alt={post.title} loading="lazy" onError={() => setBroken(true)} />
       ) : (
         <div className="jr-cover-fallback" aria-hidden="true">
           <span>S16</span>

@@ -4,6 +4,7 @@ import { usePage, useList } from "../hooks.js";
 import { gsap, revealIn } from "../lib/motion.js";
 import { usePageHead } from "../lib/seo.js";
 import { Loading, PageError } from "../components/Status.jsx";
+import { photo } from "../lib/images.js";
 
 const num = (i) => String(i + 1).padStart(2, "0");
 
@@ -39,7 +40,7 @@ export default function Services() {
           {list.items.map((s, i) => (
             <article key={s.id} className="svc-card" id={`service-${s.id}`}>
               {s.image_url && (
-                <div className="svc-img"><img src={s.image_url} alt={s.title} loading="lazy" /></div>
+                <div className="svc-img"><img src={photo(s.image_url)} alt={s.title} loading="lazy" /></div>
               )}
               <div className="svc-body">
                 <span className="svc-no">{num(i)}</span>

@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import { useBlogPost } from "../hooks.js";
 import { usePageHead } from "../lib/seo.js";
 import { Loading, PageError } from "../components/Status.jsx";
+import { photo } from "../lib/images.js";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -44,7 +45,7 @@ export default function BlogPost() {
         </div>
       </header>
       {post.cover_image && (
-        <div className="container"><img className="article-cover" src={post.cover_image} alt="" /></div>
+        <div className="container"><img className="article-cover" src={photo(post.cover_image)} alt="" /></div>
       )}
       <div className="container article-body">
         <ReactMarkdown>{post.body}</ReactMarkdown>
