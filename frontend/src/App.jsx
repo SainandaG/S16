@@ -1,21 +1,21 @@
 import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import Services from "./pages/Services.jsx";
+import Projects from "./pages/Projects.jsx";
+import Contact from "./pages/Contact.jsx";
+import NotFound from "./pages/NotFound.jsx";
+import Account from "./pages/Account.jsx";
+import { SignIn, Register } from "./pages/Auth.jsx";
 
-// Each page is its own download, so a visitor only loads the code for the page they open.
+// Pages that are rarely needed first, or are heavy, are downloaded only when visited:
+// the 3D Process page, the journal (markdown) and the admin.
 const Admin = lazy(() => import("./admin/AdminApp.jsx"));
-const Home = lazy(() => import("./pages/Home.jsx"));
-const About = lazy(() => import("./pages/About.jsx"));
-const Services = lazy(() => import("./pages/Services.jsx"));
-const Projects = lazy(() => import("./pages/Projects.jsx"));
 const Process = lazy(() => import("./pages/Process.jsx"));
-const Contact = lazy(() => import("./pages/Contact.jsx"));
-const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 const Blog = lazy(() => import("./pages/Blog.jsx"));
 const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
-const Account = lazy(() => import("./pages/Account.jsx"));
-const SignIn = lazy(() => import("./pages/Auth.jsx").then((m) => ({ default: m.SignIn })));
-const Register = lazy(() => import("./pages/Auth.jsx").then((m) => ({ default: m.Register })));
 
 export default function App() {
   return (
@@ -26,10 +26,10 @@ export default function App() {
         <Route path="about" element={<About />} />
         <Route path="services" element={<Services />} />
         <Route path="projects" element={<Projects />} />
-        <Route path="process" element={<Process />} />
+        <Route path="process" element={<Suspense fallback={null}><Process /></Suspense>} />
         <Route path="contact" element={<Contact />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="blog/:slug" element={<BlogPost />} />
+        <Route path="blog" element={<Suspense fallback={null}><Blog /></Suspense>} />
+        <Route path="blog/:slug" element={<Suspense fallback={null}><BlogPost /></Suspense>} />
         <Route path="login" element={<SignIn />} />
         <Route path="register" element={<Register />} />
         <Route path="account" element={<Account />} />
